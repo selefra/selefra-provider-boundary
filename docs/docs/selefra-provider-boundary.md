@@ -11,7 +11,7 @@ v0.0.1
 # Install 
 
 ```
-selefra provider install selefra-terraform-provider-boundary
+selefra provider install selefra-provider-boundary
 ```
 
 
