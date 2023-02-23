@@ -1,4 +1,4 @@
-# Provider: selefra-terraform-provider-boundary
+# Provider: selefra-provider-boundary
 
 ## Latest Version 
 
