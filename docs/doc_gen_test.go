@@ -1,33 +1,20 @@
 package main
 
-// import (
-// 	"fmt"
+import (
+	"github.com/selefra/selefra-provider-boundary/resources"
+	"github.com/selefra/selefra-provider-sdk/doc_gen"
+	"os"
+	"testing"
+)
 
-// 	"github.com/selefra/selefra-provider-boundary/constants"
-// 	"github.com/selefra/selefra-provider-boundary/provider"
-// 	"github.com/selefra/selefra-provider-sdk/doc_gen"
+func Test(t *testing.T) {
 
-// 	"os"
-// 	"testing"
-// )
+	docOutputDirectory := "./docs"
+	_ = os.Mkdir(docOutputDirectory, os.ModePerm)
+	err := doc_gen.New(resources.GetSelefraProvider(), docOutputDirectory).Run()
 
-// func Test(t *testing.T) {
+	if err != nil {
+		panic(err)
+	}
 
-// 	fmt.Println(constants.Begin)
-// 	docOutputDirectory := os.Getenv(constants.SELEFRADOCOUTPUTDIRECTORY)
-// 	if docOutputDirectory == constants.Constants_33 {
-
-// 		docOutputDirectory = constants.Tables
-
-// 	}
-// 	fmt.Println(docOutputDirectory)
-// 	err := doc_gen.New(provider.GetProvider(), docOutputDirectory).Run()
-
-// 	if err != nil {
-// 		panic(err)
-
-// 	}
-
-// 	fmt.Println(constants.Done)
-
-// }
+}
