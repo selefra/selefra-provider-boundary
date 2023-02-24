@@ -4,6 +4,10 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
+	"path/filepath"
+	"regexp"
+	"strings"
 
 	"github.com/hashicorp/boundary/api"
 	"github.com/hashicorp/boundary/api/authmethods"
@@ -31,6 +35,38 @@ type Client struct {
 * Terrform URL: https://registry.terraform.io/providers/bo
  */
 func newClient(clientMeta *schema.ClientMeta, config *Config) (*Client, error) {
+	fmt.Printf("----------------->\n")
+
+	// Must be four param
+	// find param in ~/.terraformrc
+	if config.Addr == "" || config.AuthMethodId == "" || config.LoginName == "" || config.PassWord == "" {
+		homedir, err := os.UserHomeDir()
+		if err != nil {
+			return nil, fmt.Errorf("get param failed: %v", err)
+		}
+
+		rcfContent, err := os.ReadFile(filepath.Join(homedir, ".terraformrc"))
+		if err != nil {
+			return nil, fmt.Errorf("get param failed: %v", err)
+		}
+		config.Addr, err = getBoundaryParam(rcfContent, "addr")
+		if err != nil {
+			return nil, fmt.Errorf("get param addr failed: %v", err)
+		}
+		config.AuthMethodId, err = getBoundaryParam(rcfContent, "auth_method_id")
+		if err != nil {
+			return nil, fmt.Errorf("get param addr failed: %v", err)
+		}
+		config.LoginName, err = getBoundaryParam(rcfContent, "password_auth_method_login_name")
+		if err != nil {
+			return nil, fmt.Errorf("get param addr failed: %v", err)
+		}
+		config.PassWord, err = getBoundaryParam(rcfContent, "password_auth_method_password")
+		if err != nil {
+			return nil, fmt.Errorf("get param addr failed: %v", err)
+		}
+	}
+
 	if config.Addr == "" || config.AuthMethodId == "" || config.LoginName == "" || config.PassWord == "" {
 		ErrorF(clientMeta, "Config Error!")
 		return nil, errors.New("Get Config Error!")
@@ -58,6 +94,24 @@ func newClient(clientMeta *schema.ClientMeta, config *Config) (*Client, error) {
 		ApiClient: client,
 		Config:    *config,
 	}, nil
+}
+
+// input addr = xx12345
+// getBoundaryParam(rcfContent, addr) -> return xx12345
+func getBoundaryParam(rcfContent []byte, str string) (string, error) {
+	exp, err := regexp.Compile(fmt.Sprintf(`%s\s?=\s?"?\w+\.\w+.\w+"?`, str))
+	if err != nil {
+		return "", fmt.Errorf("get %s failed: %v", str, err)
+	}
+
+	strExp := exp.Find(rcfContent)
+
+	rawToken := strings.Split(string(strExp), "=")
+	if len(rawToken) < 1 {
+		return "", fmt.Errorf("failed to get boundary str, please set your boundary param correct.")
+	}
+	result := strings.TrimSpace(strings.Replace(rawToken[1], "\"", "", -1))
+	return result, nil
 }
 
 func getToken(client *api.Client, config *Config) (string, error) {
