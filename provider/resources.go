@@ -219,7 +219,6 @@ func GetResource_boundary_scope() *selefra_terraform_schema.SelefraTerraformReso
 					},
 				})
 			}
-
 			return resourceRequestParamSlice, nil
 		},
 	}
