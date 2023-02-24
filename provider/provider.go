@@ -2,13 +2,11 @@ package provider
 
 import (
 	"context"
-	"log"
 
 	"github.com/selefra/selefra-provider-sdk/terraform/bridge"
 	terraform_providers "github.com/selefra/selefra-provider-sdk/terraform/provider"
 	"github.com/selefra/selefra-provider-sdk/terraform/selefra_terraform_schema"
 
-	"github.com/joho/godotenv"
 	"github.com/selefra/selefra-provider-sdk/provider"
 	"github.com/selefra/selefra-provider-sdk/provider/schema"
 	"github.com/spf13/viper"
@@ -23,15 +21,15 @@ func GetSelefraTerraformProvider() *selefra_terraform_schema.SelefraTerraformPro
 		ResourceList: getResources(),
 		ClientMeta: schema.ClientMeta{
 			InitClient: func(ctx context.Context, clientMeta *schema.ClientMeta, config *viper.Viper) ([]any, *schema.Diagnostics) {
-				err := godotenv.Load()
-				if err != nil {
-					log.Fatal(err)
+				var conf *Config
+				if err := config.Unmarshal(&conf); err != nil {
+					return nil, schema.NewDiagnostics().AddErrorMsg("analysis config err: %s", err.Error())
 				}
-				diagnostics := schema.NewDiagnostics()
 
-				client, err := newClient(clientMeta)
+				diagnostics	 := schema.NewDiagnostics()
+				client, err := newClient(clientMeta, conf)
 				if err != nil {
-					log.Fatalf("初始化client错误: %s", err.Error())
+					schema.NewDiagnostics().AddErrorMsg("Init client error: ", err.Error())
 				}
 
 				// run terraform providers
@@ -65,11 +63,13 @@ func GetSelefraTerraformProvider() *selefra_terraform_schema.SelefraTerraformPro
 		},
 		ConfigMeta: provider.ConfigMeta{
 			GetDefaultConfigTemplate: func(ctx context.Context) string {
-				// TODO
-				return ``
+				return `# Authenticate with the 'addr' 'auth_method_id' 'password_auth_method_login_name' 'password_auth_method_password' arguments.
+				addr: "127.0.0.1:9200"
+				auth_method_id: "xxx"
+				password_auth_method_login_name: "xxx"
+				password_auth_method_password: "xxx"`
 			},
 			Validation: func(ctx context.Context, config *viper.Viper) *schema.Diagnostics {
-				// TODO
 				return nil
 			},
 		},
