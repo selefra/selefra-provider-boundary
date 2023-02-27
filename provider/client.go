@@ -22,6 +22,13 @@ type Config struct {
 	PassWord     string `yaml:"password_auth_method_password" json:"password_auth_method_password" mapstructure:"password_auth_method_password"`
 }
 
+func (c *Config) isVaild() bool {
+	if c.Addr == "" || c.AuthMethodId == "" || c.LoginName == "" || c.PassWord == "" {
+		return false
+	}
+	return true
+}
+
 type Client struct {
 	TerraformBridge *bridge.TerraformBridge
 	Config
@@ -39,7 +46,7 @@ func newClient(clientMeta *schema.ClientMeta, config *Config) (*Client, error) {
 
 	// Must be four param
 	// find param in ~/.terraformrc
-	if config.Addr == "" || config.AuthMethodId == "" || config.LoginName == "" || config.PassWord == "" {
+	if !config.isVaild() {
 		homedir, err := os.UserHomeDir()
 		if err != nil {
 			return nil, fmt.Errorf("get param failed: %v", err)
@@ -67,7 +74,15 @@ func newClient(clientMeta *schema.ClientMeta, config *Config) (*Client, error) {
 		}
 	}
 
-	if config.Addr == "" || config.AuthMethodId == "" || config.LoginName == "" || config.PassWord == "" {
+	// Env var
+	if !config.isVaild() {
+		config.Addr = os.Getenv("BOUNDARY_ADDR")
+		config.AuthMethodId = os.Getenv("AUTH_METHOD_ID")
+		config.LoginName = os.Getenv("PASSWORD_AUTH_METHOD_LOGIN_NAME")
+		config.PassWord = os.Getenv("PASSWORD_AUTH_METHOD_PASSWORD")
+	}
+
+	if !config.isVaild() {
 		ErrorF(clientMeta, "Config Error!")
 		return nil, errors.New("Get Config Error!")
 	}

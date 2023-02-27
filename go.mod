@@ -4,7 +4,6 @@ go 1.19
 
 require (
 	github.com/hashicorp/boundary/api v0.0.34
-	github.com/joho/godotenv v1.5.1
 	github.com/selefra/selefra-provider-sdk v0.0.18-0.20230106133742-08876f81b574
 	github.com/spf13/viper v1.14.0
 )

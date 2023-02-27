@@ -1,11 +1,10 @@
 package resources
 
 import (
+	"github.com/selefra/selefra-provider-sdk/test_helper"
 	"os"
 	"strings"
 	"testing"
-
-	"github.com/selefra/selefra-provider-sdk/test_helper"
 )
 
 func Test_Provider(t *testing.T) {

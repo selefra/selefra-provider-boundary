@@ -17,6 +17,7 @@ selefra provider install selefra-terraform-provider-boundary
 
 ## Tables 
 
+- [boundary_role](boundary_role.md)
 - [boundary_auth_method_oidc](boundary_auth_method_oidc.md)
 - [boundary_scope](boundary_scope.md)
 - [boundary_target](boundary_target.md)

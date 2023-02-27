@@ -2,13 +2,11 @@ package resources
 
 import (
 	"context"
-	"log"
 
 	"github.com/selefra/selefra-provider-sdk/terraform/bridge"
 	terraform_providers "github.com/selefra/selefra-provider-sdk/terraform/provider"
 	"github.com/selefra/selefra-provider-sdk/terraform/selefra_terraform_schema"
 
-	"github.com/joho/godotenv"
 	"github.com/selefra/selefra-provider-sdk/provider"
 	"github.com/selefra/selefra-provider-sdk/provider/schema"
 	"github.com/spf13/viper"
@@ -18,20 +16,20 @@ const Version = "v0.0.1"
 
 func GetSelefraTerraformProvider() *selefra_terraform_schema.SelefraTerraformProvider {
 	return &selefra_terraform_schema.SelefraTerraformProvider{
-		Name:		"selefra-terraform-provider-boundary",
-		Version:	Version,
-		ResourceList:	getResources(),
+		Name:         "selefra-terraform-provider-boundary",
+		Version:      Version,
+		ResourceList: getResources(),
 		ClientMeta: schema.ClientMeta{
 			InitClient: func(ctx context.Context, clientMeta *schema.ClientMeta, config *viper.Viper) ([]any, *schema.Diagnostics) {
-				err := godotenv.Load()
-				if err != nil {
-					log.Fatal(err)
+				var conf *Config
+				if err := config.Unmarshal(&conf); err != nil {
+					return nil, schema.NewDiagnostics().AddErrorMsg("analysis config err: %s", err.Error())
 				}
-				diagnostics := schema.NewDiagnostics()
 
-				client, err := newClient(clientMeta)
+				diagnostics := schema.NewDiagnostics()
+				client, err := newClient(clientMeta, conf)
 				if err != nil {
-					log.Fatalf("初始化client错误: %s", err.Error())
+					schema.NewDiagnostics().AddErrorMsg("Init client error: ", err.Error())
 				}
 
 				// run terraform providers
@@ -65,17 +63,19 @@ func GetSelefraTerraformProvider() *selefra_terraform_schema.SelefraTerraformPro
 		},
 		ConfigMeta: provider.ConfigMeta{
 			GetDefaultConfigTemplate: func(ctx context.Context) string {
-				// TODO
-				return ``
+				return `# Authenticate with the 'addr' 'auth_method_id' 'password_auth_method_login_name' 'password_auth_method_password' arguments.
+				addr: "127.0.0.1:9200"
+				auth_method_id: "xxx"
+				password_auth_method_login_name: "xxx"
+				password_auth_method_password: "xxx"`
 			},
 			Validation: func(ctx context.Context, config *viper.Viper) *schema.Diagnostics {
-				// TODO
 				return nil
 			},
 		},
 		TransformerMeta: schema.TransformerMeta{
-			DefaultColumnValueConvertorBlackList:	[]string{},
-			DataSourcePullResultAutoExpand:		true,
+			DefaultColumnValueConvertorBlackList: []string{},
+			DataSourcePullResultAutoExpand:       true,
 		},
 		ErrorsHandlerMeta: schema.ErrorsHandlerMeta{
 			IgnoredErrors: []schema.IgnoredError{schema.IgnoredErrorOnSaveResult},
@@ -87,91 +87,91 @@ func getTerraformProviderExecuteFileSlice() []*terraform_providers.TerraformProv
 	providerFileSlice := make([]*terraform_providers.TerraformProviderFile, 0)
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_darwin_amd64.zip",
-		Arch:			"amd64",
-		OS:			"darwin",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_darwin_amd64.zip",
+		Arch:            "amd64",
+		OS:              "darwin",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_darwin_arm64.zip",
-		Arch:			"arm64",
-		OS:			"darwin",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_darwin_arm64.zip",
+		Arch:            "arm64",
+		OS:              "darwin",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_freebsd_386.zip",
-		Arch:			"386",
-		OS:			"freebsd",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_freebsd_386.zip",
+		Arch:            "386",
+		OS:              "freebsd",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_freebsd_amd64.zip",
-		Arch:			"amd64",
-		OS:			"freebsd",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_freebsd_amd64.zip",
+		Arch:            "amd64",
+		OS:              "freebsd",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_freebsd_arm.zip",
-		Arch:			"arm",
-		OS:			"freebsd",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_freebsd_arm.zip",
+		Arch:            "arm",
+		OS:              "freebsd",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_linux_386.zip",
-		Arch:			"386",
-		OS:			"linux",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_linux_386.zip",
+		Arch:            "386",
+		OS:              "linux",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_linux_amd64.zip",
-		Arch:			"amd64",
-		OS:			"linux",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_linux_amd64.zip",
+		Arch:            "amd64",
+		OS:              "linux",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_linux_arm.zip",
-		Arch:			"arm",
-		OS:			"linux",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_linux_arm.zip",
+		Arch:            "arm",
+		OS:              "linux",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_linux_arm64.zip",
-		Arch:			"arm64",
-		OS:			"linux",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_linux_arm64.zip",
+		Arch:            "arm64",
+		OS:              "linux",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_windows_386.zip",
-		Arch:			"386",
-		OS:			"windows",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_windows_386.zip",
+		Arch:            "386",
+		OS:              "windows",
 	})
 
 	providerFileSlice = append(providerFileSlice, &terraform_providers.TerraformProviderFile{
-		ProviderName:		"",
-		ProviderVersion:	"1.1.4",
-		DownloadUrl:		"https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_windows_amd64.zip",
-		Arch:			"amd64",
-		OS:			"windows",
+		ProviderName:    "",
+		ProviderVersion: "1.1.4",
+		DownloadUrl:     "https://releases.hashicorp.com/terraform-provider-boundary/1.1.4/terraform-provider-boundary_1.1.4_windows_amd64.zip",
+		Arch:            "amd64",
+		OS:              "windows",
 	})
 
 	return providerFileSlice

@@ -31,42 +31,42 @@ func GetSelefraTables() []*schema.Table {
 
 	// table, d = TableSchemaGenerator_boundary_host_static()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_credential_ssh_private_key()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_credential_json()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_account_password()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_credential_username_password()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
-	// table, d = TableSchemaGenerator_boundary_role()
-	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
-	// }
+	table, d = TableSchemaGenerator_boundary_role()
+	if !diagnostics.AddDiagnostics(d).HasError() {
+		tables = append(tables, table)
+	}
 
 	// table, d = TableSchemaGenerator_boundary_host_set_plugin()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_credential_library_vault_ssh_certificate()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	table, d = TableSchemaGenerator_boundary_auth_method_oidc()
@@ -86,7 +86,7 @@ func GetSelefraTables() []*schema.Table {
 
 	// table, d = TableSchemaGenerator_boundary_host_catalog_static()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	table, d = TableSchemaGenerator_boundary_auth_method()
@@ -96,7 +96,7 @@ func GetSelefraTables() []*schema.Table {
 
 	// table, d = TableSchemaGenerator_boundary_host_catalog_plugin()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	table, d = TableSchemaGenerator_boundary_group()
@@ -106,17 +106,17 @@ func GetSelefraTables() []*schema.Table {
 
 	// table, d = TableSchemaGenerator_boundary_host_set()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_credential_library_vault()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_credential_store_vault()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	table, d = TableSchemaGenerator_boundary_user()
@@ -126,17 +126,17 @@ func GetSelefraTables() []*schema.Table {
 
 	// table, d = TableSchemaGenerator_boundary_account_oidc()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_host_set_static()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_host()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	table, d = TableSchemaGenerator_boundary_auth_method_password()
@@ -146,17 +146,17 @@ func GetSelefraTables() []*schema.Table {
 
 	// table, d = TableSchemaGenerator_boundary_credential_store_static()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_host_catalog()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	// table, d = TableSchemaGenerator_boundary_managed_group()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	table, d = TableSchemaGenerator_boundary_worker()
@@ -166,7 +166,7 @@ func GetSelefraTables() []*schema.Table {
 
 	// table, d = TableSchemaGenerator_boundary_account()
 	// if !diagnostics.AddDiagnostics(d).HasError() {
-	// 	tables = append(tables, table)
+	//     tables = append(tables, table)
 	// }
 
 	if diagnostics.HasError() {

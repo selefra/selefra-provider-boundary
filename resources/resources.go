@@ -108,10 +108,10 @@ import (
 // terraform resource: boundary_role
 func GetResource_boundary_role() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_role",
-		TerraformResourceName: "boundary_role",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_role",
+		TerraformResourceName:	"boundary_role",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			roleClient := roles.NewClient(client.ApiClient)
@@ -124,7 +124,7 @@ func GetResource_boundary_role() *selefra_terraform_schema.SelefraTerraformResou
 			resourceRequestParamSlice := make([]*selefra_terraform_schema.ResourceRequestParam, 0)
 			for _, roles := range rolesListRes.Items {
 				resourceRequestParamSlice = append(resourceRequestParamSlice, &selefra_terraform_schema.ResourceRequestParam{
-					ID: roles.Id,
+					ID:	roles.Id,
 					ArgumentMap: map[string]any{
 						"scope_id": roles.ScopeId,
 					},
@@ -167,10 +167,10 @@ func GetResource_boundary_role() *selefra_terraform_schema.SelefraTerraformResou
 // terraform resource: boundary_auth_method_oidc
 func GetResource_boundary_auth_method_oidc() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_auth_method_oidc",
-		TerraformResourceName: "boundary_auth_method_oidc",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_auth_method_oidc",
+		TerraformResourceName:	"boundary_auth_method_oidc",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			amClient := authmethods.NewClient(client.ApiClient)
@@ -183,7 +183,7 @@ func GetResource_boundary_auth_method_oidc() *selefra_terraform_schema.SelefraTe
 			resourceRequestParamSlice := make([]*selefra_terraform_schema.ResourceRequestParam, 0)
 			for _, authMethod := range authMetuodsListResult.Items {
 				resourceRequestParamSlice = append(resourceRequestParamSlice, &selefra_terraform_schema.ResourceRequestParam{
-					ID: authMethod.Id,
+					ID:	authMethod.Id,
 					ArgumentMap: map[string]any{
 						"scope_id": authMethod.ScopeId,
 					},
@@ -198,10 +198,10 @@ func GetResource_boundary_auth_method_oidc() *selefra_terraform_schema.SelefraTe
 // terraform resource: boundary_scope
 func GetResource_boundary_scope() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_scope",
-		TerraformResourceName: "boundary_scope",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_scope",
+		TerraformResourceName:	"boundary_scope",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			scopeClient := scopes.NewClient(client.ApiClient)
@@ -213,7 +213,7 @@ func GetResource_boundary_scope() *selefra_terraform_schema.SelefraTerraformReso
 			resourceRequestParamSlice := make([]*selefra_terraform_schema.ResourceRequestParam, 0)
 			for _, scope := range scopesListRes.Items {
 				resourceRequestParamSlice = append(resourceRequestParamSlice, &selefra_terraform_schema.ResourceRequestParam{
-					ID: scope.Id,
+					ID:	scope.Id,
 					ArgumentMap: map[string]any{
 						"scope_id": scope.ScopeId,
 					},
@@ -227,10 +227,10 @@ func GetResource_boundary_scope() *selefra_terraform_schema.SelefraTerraformReso
 // terraform resource: boundary_target
 func GetResource_boundary_target() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_target",
-		TerraformResourceName: "boundary_target",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_target",
+		TerraformResourceName:	"boundary_target",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			targetsClient := targets.NewClient(client.ApiClient)
@@ -243,10 +243,10 @@ func GetResource_boundary_target() *selefra_terraform_schema.SelefraTerraformRes
 			resourceRequestParamSlice := make([]*selefra_terraform_schema.ResourceRequestParam, 0)
 			for _, target := range targetsListRes.Items {
 				resourceRequestParamSlice = append(resourceRequestParamSlice, &selefra_terraform_schema.ResourceRequestParam{
-					ID: target.Id,
+					ID:	target.Id,
 					ArgumentMap: map[string]any{
-						"scope_id": target.ScopeId,
-						"type":     target.Type,
+						"scope_id":	target.ScopeId,
+						"type":		target.Type,
 					},
 				})
 			}
@@ -273,10 +273,10 @@ func GetResource_boundary_target() *selefra_terraform_schema.SelefraTerraformRes
 // terraform resource: boundary_auth_method
 func GetResource_boundary_auth_method() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_auth_method",
-		TerraformResourceName: "boundary_auth_method",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_auth_method",
+		TerraformResourceName:	"boundary_auth_method",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			amClient := authmethods.NewClient(client.ApiClient)
@@ -289,10 +289,10 @@ func GetResource_boundary_auth_method() *selefra_terraform_schema.SelefraTerrafo
 			resourceRequestParamSlice := make([]*selefra_terraform_schema.ResourceRequestParam, 0)
 			for _, authMethod := range authMetuodsListResult.Items {
 				resourceRequestParamSlice = append(resourceRequestParamSlice, &selefra_terraform_schema.ResourceRequestParam{
-					ID: authMethod.Id,
+					ID:	authMethod.Id,
 					ArgumentMap: map[string]any{
-						"scope_id": authMethod.ScopeId,
-						"type":     authMethod.Type,
+						"scope_id":	authMethod.ScopeId,
+						"type":		authMethod.Type,
 					},
 				})
 			}
@@ -319,10 +319,10 @@ func GetResource_boundary_auth_method() *selefra_terraform_schema.SelefraTerrafo
 // terraform resource: boundary_group
 func GetResource_boundary_group() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_group",
-		TerraformResourceName: "boundary_group",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_group",
+		TerraformResourceName:	"boundary_group",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			groupsClient := groups.NewClient(client.ApiClient)
@@ -335,7 +335,7 @@ func GetResource_boundary_group() *selefra_terraform_schema.SelefraTerraformReso
 			resourceRequestParamSlice := make([]*selefra_terraform_schema.ResourceRequestParam, 0)
 			for _, authMethod := range groupsListRes.Items {
 				resourceRequestParamSlice = append(resourceRequestParamSlice, &selefra_terraform_schema.ResourceRequestParam{
-					ID: authMethod.Id,
+					ID:	authMethod.Id,
 					ArgumentMap: map[string]any{
 						"scope_id": authMethod.ScopeId,
 					},
@@ -392,10 +392,10 @@ func GetResource_boundary_group() *selefra_terraform_schema.SelefraTerraformReso
 // terraform resource: boundary_user
 func GetResource_boundary_user() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_user",
-		TerraformResourceName: "boundary_user",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_user",
+		TerraformResourceName:	"boundary_user",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			usersClient := users.NewClient(client.ApiClient)
@@ -407,7 +407,7 @@ func GetResource_boundary_user() *selefra_terraform_schema.SelefraTerraformResou
 			resourceRequestParamSlice := make([]*selefra_terraform_schema.ResourceRequestParam, 0)
 			for _, user := range usersListRes.Items {
 				resourceRequestParamSlice = append(resourceRequestParamSlice, &selefra_terraform_schema.ResourceRequestParam{
-					ID: user.Id,
+					ID:	user.Id,
 					ArgumentMap: map[string]any{
 						"scope_id": user.ScopeId,
 					},
@@ -463,10 +463,10 @@ func GetResource_boundary_user() *selefra_terraform_schema.SelefraTerraformResou
 // terraform resource: boundary_auth_method_password
 func GetResource_boundary_auth_method_password() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_auth_method_password",
-		TerraformResourceName: "boundary_auth_method_password",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_auth_method_password",
+		TerraformResourceName:	"boundary_auth_method_password",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			authmethodsClient := authmethods.NewClient(client.ApiClient)
@@ -478,10 +478,10 @@ func GetResource_boundary_auth_method_password() *selefra_terraform_schema.Selef
 			resourceRequestParamSlice := make([]*selefra_terraform_schema.ResourceRequestParam, 0)
 			for _, authmetohd := range authmethodsListRes.Items {
 				resourceRequestParamSlice = append(resourceRequestParamSlice, &selefra_terraform_schema.ResourceRequestParam{
-					ID: authmetohd.Id,
+					ID:	authmetohd.Id,
 					ArgumentMap: map[string]any{
-						"scope_id": authmetohd.ScopeId,
-						"type":     authmetohd.Type,
+						"scope_id":	authmetohd.ScopeId,
+						"type":		authmetohd.Type,
 					},
 				})
 			}
@@ -535,10 +535,10 @@ func GetResource_boundary_auth_method_password() *selefra_terraform_schema.Selef
 // terraform resource: boundary_worker
 func GetResource_boundary_worker() *selefra_terraform_schema.SelefraTerraformResource {
 	return &selefra_terraform_schema.SelefraTerraformResource{
-		SelefraTableName:      "boundary_worker",
-		TerraformResourceName: "boundary_worker",
-		Description:           "",
-		SubTables:             nil,
+		SelefraTableName:	"boundary_worker",
+		TerraformResourceName:	"boundary_worker",
+		Description:		"",
+		SubTables:		nil,
 		ListResourceParamsFunc: func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask, resultChannel chan<- any) ([]*selefra_terraform_schema.ResourceRequestParam, *schema.Diagnostics) {
 			client := taskClient.(*Client)
 			workersClient := workers.NewClient(client.ApiClient)

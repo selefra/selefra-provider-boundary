@@ -194,41 +194,41 @@ import (
 
 
 
-// // boundary_role
-// func TableSchemaGenerator_boundary_role() (*schema.Table, *schema.Diagnostics) {
-//     diagnostics := schema.NewDiagnostics()
+// boundary_role
+func TableSchemaGenerator_boundary_role() (*schema.Table, *schema.Diagnostics) {
+    diagnostics := schema.NewDiagnostics()
 
-//     table, d := GetResource_boundary_role().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-//         return taskClient.(*Client).TerraformBridge
-//     })
-//     if diagnostics.AddDiagnostics(d).HasError() {
-//         return nil, diagnostics
-//     }
+    table, d := GetResource_boundary_role().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+        return taskClient.(*Client).TerraformBridge
+    })
+    if diagnostics.AddDiagnostics(d).HasError() {
+        return nil, diagnostics
+    }
 
-//     table.Columns = GetColumns_boundary_role()
-//     if len(table.Columns) == 0 {
-//         return nil, diagnostics.AddErrorMsg("")
-//     }
+    table.Columns = GetColumns_boundary_role()
+    if len(table.Columns) == 0 {
+        return nil, diagnostics.AddErrorMsg("")
+    }
 
-//     return table, diagnostics
-// }
+    return table, diagnostics
+}
 
-// // boundary_role
-// func GetColumns_boundary_role() []*schema.Column {
-//     return []*schema.Column{ 
-//         table_schema_generator.NewColumnBuilder().ColumnName("principal_ids").ColumnType(schema.ColumnTypeJSON).Description("A list of principal (user or group) IDs to add as principals on the role.").
-//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-//         table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created. Defaults to the provider's `default_scope` if unset.").Build(), 
-//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The role description.").Build(), 
-//         table_schema_generator.NewColumnBuilder().ColumnName("grant_scope_id").ColumnType(schema.ColumnTypeString).Build(), 
-//         table_schema_generator.NewColumnBuilder().ColumnName("grant_strings").ColumnType(schema.ColumnTypeJSON).Description(" A list of stringified grants for the role.").
-//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the role.").Build(), 
-//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The role name. Defaults to the resource name.").Build(), 
-//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-//     }
-// }
+// boundary_role
+func GetColumns_boundary_role() []*schema.Column {
+    return []*schema.Column{ 
+        table_schema_generator.NewColumnBuilder().ColumnName("principal_ids").ColumnType(schema.ColumnTypeJSON).Description("A list of principal (user or group) IDs to add as principals on the role.").
+        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+        table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created. Defaults to the provider's `default_scope` if unset.").Build(), 
+        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The role description.").Build(), 
+        table_schema_generator.NewColumnBuilder().ColumnName("grant_scope_id").ColumnType(schema.ColumnTypeString).Build(), 
+        table_schema_generator.NewColumnBuilder().ColumnName("grant_strings").ColumnType(schema.ColumnTypeJSON).Description(" A list of stringified grants for the role.").
+        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the role.").Build(), 
+        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The role name. Defaults to the resource name.").Build(), 
+        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+    }
+}
 
 
 
