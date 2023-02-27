@@ -14,302 +14,302 @@ import (
 
 
 
-// boundary_host_static
-func TableSchemaGenerator_boundary_host_static() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_host_static
+// func TableSchemaGenerator_boundary_host_static() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_host_static().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_host_static().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_host_static()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_host_static()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_host_static
-func GetColumns_boundary_host_static() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("address").ColumnType(schema.ColumnTypeString).Description("The static address of the host resource as `<IP>` (note: port assignment occurs in the target resource definition, do not add :port here) or a domain name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
-
-
-
-// boundary_credential_ssh_private_key
-func TableSchemaGenerator_boundary_credential_ssh_private_key() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
-
-    table, d := GetResource_boundary_credential_ssh_private_key().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
-
-    table.Columns = GetColumns_boundary_credential_ssh_private_key()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
-
-    return table, diagnostics
-}
-
-// boundary_credential_ssh_private_key
-func GetColumns_boundary_credential_ssh_private_key() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The description of the credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("private_key_hmac").ColumnType(schema.ColumnTypeString).Description("The private key hmac.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("private_key_passphrase").ColumnType(schema.ColumnTypeString).Description("The passphrase of the private key associated with the credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("private_key_passphrase_hmac").ColumnType(schema.ColumnTypeString).Description("The private key passphrase hmac.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("ID of the credential store this credential belongs to.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The name of the credential. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("private_key").ColumnType(schema.ColumnTypeString).Description("The private key associated with the credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("username").ColumnType(schema.ColumnTypeString).Description("The username associated with the credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_host_static
+// func GetColumns_boundary_host_static() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("address").ColumnType(schema.ColumnTypeString).Description("The static address of the host resource as `<IP>` (note: port assignment occurs in the target resource definition, do not add :port here) or a domain name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
-// boundary_credential_json
-func TableSchemaGenerator_boundary_credential_json() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_credential_ssh_private_key
+// func TableSchemaGenerator_boundary_credential_ssh_private_key() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_credential_json().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_credential_ssh_private_key().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_credential_json()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_credential_ssh_private_key()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_credential_json
-func GetColumns_boundary_credential_json() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("The credential store in which to save this json credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The description of this json credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of this json credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The name of this json credential. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("object").ColumnType(schema.ColumnTypeString).Description("The object for the this json credential. Either values encoded with the \"jsonencode\" function, pre-escaped JSON string, or a file").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("object_hmac").ColumnType(schema.ColumnTypeString).Description("The object hmac.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
-
-
-
-// boundary_account_password
-func TableSchemaGenerator_boundary_account_password() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
-
-    table, d := GetResource_boundary_account_password().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
-
-    table.Columns = GetColumns_boundary_account_password()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
-
-    return table, diagnostics
-}
-
-// boundary_account_password
-func GetColumns_boundary_account_password() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("login_name").ColumnType(schema.ColumnTypeString).Description("The login name for this account.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The account name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("password").ColumnType(schema.ColumnTypeString).Description("The account password. Only set on create, changes will not be reflected when updating account.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The resource type.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("auth_method_id").ColumnType(schema.ColumnTypeString).Description("The resource ID for the auth method.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The account description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the account.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_credential_ssh_private_key
+// func GetColumns_boundary_credential_ssh_private_key() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The description of the credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("private_key_hmac").ColumnType(schema.ColumnTypeString).Description("The private key hmac.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("private_key_passphrase").ColumnType(schema.ColumnTypeString).Description("The passphrase of the private key associated with the credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("private_key_passphrase_hmac").ColumnType(schema.ColumnTypeString).Description("The private key passphrase hmac.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("ID of the credential store this credential belongs to.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The name of the credential. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("private_key").ColumnType(schema.ColumnTypeString).Description("The private key associated with the credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("username").ColumnType(schema.ColumnTypeString).Description("The username associated with the credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
-// boundary_credential_username_password
-func TableSchemaGenerator_boundary_credential_username_password() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_credential_json
+// func TableSchemaGenerator_boundary_credential_json() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_credential_username_password().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_credential_json().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_credential_username_password()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_credential_json()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_credential_username_password
-func GetColumns_boundary_credential_username_password() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("username").ColumnType(schema.ColumnTypeString).Description("The username of this username/password credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("The credential store in which to save this username/password credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The description of this username/password credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of this username/password credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The name of this username/password credential. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("password").ColumnType(schema.ColumnTypeString).Description("The password of this username/password credential.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("password_hmac").ColumnType(schema.ColumnTypeString).Description("The password hmac.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
-
-
-
-// boundary_role
-func TableSchemaGenerator_boundary_role() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
-
-    table, d := GetResource_boundary_role().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
-
-    table.Columns = GetColumns_boundary_role()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
-
-    return table, diagnostics
-}
-
-// boundary_role
-func GetColumns_boundary_role() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("principal_ids").ColumnType(schema.ColumnTypeJSON).Description("A list of principal (user or group) IDs to add as principals on the role.").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created. Defaults to the provider's `default_scope` if unset.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The role description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("grant_scope_id").ColumnType(schema.ColumnTypeString).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("grant_strings").ColumnType(schema.ColumnTypeJSON).Description(" A list of stringified grants for the role.").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the role.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The role name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_credential_json
+// func GetColumns_boundary_credential_json() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("The credential store in which to save this json credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The description of this json credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of this json credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The name of this json credential. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("object").ColumnType(schema.ColumnTypeString).Description("The object for the this json credential. Either values encoded with the \"jsonencode\" function, pre-escaped JSON string, or a file").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("object_hmac").ColumnType(schema.ColumnTypeString).Description("The object hmac.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
-// boundary_host_set_plugin
-func TableSchemaGenerator_boundary_host_set_plugin() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_account_password
+// func TableSchemaGenerator_boundary_account_password() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_host_set_plugin().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_account_password().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_host_set_plugin()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_account_password()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_host_set_plugin
-func GetColumns_boundary_host_set_plugin() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host set.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host set name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("preferred_endpoints").ColumnType(schema.ColumnTypeJSON).Description("The ordered list of preferred endpoints.").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("sync_interval_seconds").ColumnType(schema.ColumnTypeFloat).Description("The value to set for the sync interval seconds.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host set").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("attributes_json").ColumnType(schema.ColumnTypeString).Description("The attributes for the host set. Either values encoded with the \"jsonencode\" function, pre-escaped JSON string, or a file:// or env:// path. Set to a string \"null\" or remove the block to clear all attributes in the host set.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host set description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Description("The catalog for the host set.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_account_password
+// func GetColumns_boundary_account_password() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("login_name").ColumnType(schema.ColumnTypeString).Description("The login name for this account.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The account name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("password").ColumnType(schema.ColumnTypeString).Description("The account password. Only set on create, changes will not be reflected when updating account.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The resource type.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("auth_method_id").ColumnType(schema.ColumnTypeString).Description("The resource ID for the auth method.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The account description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the account.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
-// boundary_credential_library_vault_ssh_certificate
-func TableSchemaGenerator_boundary_credential_library_vault_ssh_certificate() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_credential_username_password
+// func TableSchemaGenerator_boundary_credential_username_password() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_credential_library_vault_ssh_certificate().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_credential_username_password().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_credential_library_vault_ssh_certificate()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_credential_username_password()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_credential_library_vault_ssh_certificate
-func GetColumns_boundary_credential_library_vault_ssh_certificate() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("key_bits").ColumnType(schema.ColumnTypeFloat).Description("Specifies the number of bits to use for the generated keys.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("key_type").ColumnType(schema.ColumnTypeString).Description("Specifies the desired key type; must be ed25519, ecdsa, or rsa.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("path").ColumnType(schema.ColumnTypeString).Description("The path in Vault to request credentials from.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("ttl").ColumnType(schema.ColumnTypeString).Description("Specifies the requested time to live for a certificate returned from the library.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("username").ColumnType(schema.ColumnTypeString).Description("The username to use with the certificate returned by the library.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("extensions").ColumnType(schema.ColumnTypeJSON).Description("Specifies a map of the extensions that the certificate should be signed for.").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the Vault credential library.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The Vault credential library description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("key_id").ColumnType(schema.ColumnTypeString).Description("Specifies the key id a certificate should have.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The Vault credential library name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("The ID of the credential store that this library belongs to.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("critical_options").ColumnType(schema.ColumnTypeJSON).Description("Specifies a map of the critical options that the certificate should be signed for.").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_credential_username_password
+// func GetColumns_boundary_credential_username_password() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("username").ColumnType(schema.ColumnTypeString).Description("The username of this username/password credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("The credential store in which to save this username/password credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The description of this username/password credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of this username/password credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The name of this username/password credential. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("password").ColumnType(schema.ColumnTypeString).Description("The password of this username/password credential.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("password_hmac").ColumnType(schema.ColumnTypeString).Description("The password hmac.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
+
+
+
+// // boundary_role
+// func TableSchemaGenerator_boundary_role() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
+
+//     table, d := GetResource_boundary_role().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
+
+//     table.Columns = GetColumns_boundary_role()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
+
+//     return table, diagnostics
+// }
+
+// // boundary_role
+// func GetColumns_boundary_role() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("principal_ids").ColumnType(schema.ColumnTypeJSON).Description("A list of principal (user or group) IDs to add as principals on the role.").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created. Defaults to the provider's `default_scope` if unset.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The role description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("grant_scope_id").ColumnType(schema.ColumnTypeString).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("grant_strings").ColumnType(schema.ColumnTypeJSON).Description(" A list of stringified grants for the role.").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the role.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The role name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
+
+
+
+// // boundary_host_set_plugin
+// func TableSchemaGenerator_boundary_host_set_plugin() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
+
+//     table, d := GetResource_boundary_host_set_plugin().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
+
+//     table.Columns = GetColumns_boundary_host_set_plugin()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
+
+//     return table, diagnostics
+// }
+
+// // boundary_host_set_plugin
+// func GetColumns_boundary_host_set_plugin() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host set.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host set name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("preferred_endpoints").ColumnType(schema.ColumnTypeJSON).Description("The ordered list of preferred endpoints.").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("sync_interval_seconds").ColumnType(schema.ColumnTypeFloat).Description("The value to set for the sync interval seconds.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host set").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("attributes_json").ColumnType(schema.ColumnTypeString).Description("The attributes for the host set. Either values encoded with the \"jsonencode\" function, pre-escaped JSON string, or a file:// or env:// path. Set to a string \"null\" or remove the block to clear all attributes in the host set.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host set description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Description("The catalog for the host set.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
+
+
+
+// // boundary_credential_library_vault_ssh_certificate
+// func TableSchemaGenerator_boundary_credential_library_vault_ssh_certificate() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
+
+//     table, d := GetResource_boundary_credential_library_vault_ssh_certificate().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
+
+//     table.Columns = GetColumns_boundary_credential_library_vault_ssh_certificate()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
+
+//     return table, diagnostics
+// }
+
+// // boundary_credential_library_vault_ssh_certificate
+// func GetColumns_boundary_credential_library_vault_ssh_certificate() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("key_bits").ColumnType(schema.ColumnTypeFloat).Description("Specifies the number of bits to use for the generated keys.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("key_type").ColumnType(schema.ColumnTypeString).Description("Specifies the desired key type; must be ed25519, ecdsa, or rsa.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("path").ColumnType(schema.ColumnTypeString).Description("The path in Vault to request credentials from.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("ttl").ColumnType(schema.ColumnTypeString).Description("Specifies the requested time to live for a certificate returned from the library.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("username").ColumnType(schema.ColumnTypeString).Description("The username to use with the certificate returned by the library.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("extensions").ColumnType(schema.ColumnTypeJSON).Description("Specifies a map of the extensions that the certificate should be signed for.").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the Vault credential library.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The Vault credential library description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("key_id").ColumnType(schema.ColumnTypeString).Description("Specifies the key id a certificate should have.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The Vault credential library name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("The ID of the credential store that this library belongs to.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("critical_options").ColumnType(schema.ColumnTypeJSON).Description("Specifies a map of the critical options that the certificate should be signed for.").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
@@ -450,36 +450,36 @@ func GetColumns_boundary_target() []*schema.Column {
 
 
 
-// boundary_host_catalog_static
-func TableSchemaGenerator_boundary_host_catalog_static() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_host_catalog_static
+// func TableSchemaGenerator_boundary_host_catalog_static() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_host_catalog_static().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_host_catalog_static().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_host_catalog_static()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_host_catalog_static()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_host_catalog_static
-func GetColumns_boundary_host_catalog_static() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host catalog description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host catalog.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host catalog name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_host_catalog_static
+// func GetColumns_boundary_host_catalog_static() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host catalog description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host catalog.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host catalog name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
@@ -519,44 +519,44 @@ func GetColumns_boundary_auth_method() []*schema.Column {
 
 
 
-// boundary_host_catalog_plugin
-func TableSchemaGenerator_boundary_host_catalog_plugin() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_host_catalog_plugin
+// func TableSchemaGenerator_boundary_host_catalog_plugin() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_host_catalog_plugin().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_host_catalog_plugin().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_host_catalog_plugin()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_host_catalog_plugin()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_host_catalog_plugin
-func GetColumns_boundary_host_catalog_plugin() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("internal_force_update").ColumnType(schema.ColumnTypeString).Description("Internal only. Used to force update so that we can always check the value of secrets.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("internal_hmac_used_for_secrets_config_hmac").ColumnType(schema.ColumnTypeString).Description("Internal only. The Boundary-provided HMAC used to calculate the current value of the HMAC'd config. Used for drift detection.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("plugin_name").ColumnType(schema.ColumnTypeString).Description("The name of the plugin that should back the resource. This or plugin_id must be defined.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("secrets_json").ColumnType(schema.ColumnTypeString).Description("The secrets for the host catalog. Either values encoded with the \"jsonencode\" function, pre-escaped JSON string, or a file:// or env:// path. Set to a string \"null\" to clear any existing values. NOTE: Unlike \"attributes_json\", removing this block will NOT clear secrets from the host catalog; this allows injecting secrets for one call, then removing them for storage.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("attributes_json").ColumnType(schema.ColumnTypeString).Description("The attributes for the host catalog. Either values encoded with the \"jsonencode\" function, pre-escaped JSON string, or a file:// or env:// path. Set to a string \"null\" or remove the block to clear all attributes in the host catalog.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host catalog description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host catalog.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("internal_secrets_config_hmac").ColumnType(schema.ColumnTypeString).Description("Internal only. HMAC of (serverSecretsHmac + config secrets). Used for proper secrets handling.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host catalog name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("plugin_id").ColumnType(schema.ColumnTypeString).Description("The ID of the plugin that should back the resource. This or plugin_name must be defined.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("secrets_hmac").ColumnType(schema.ColumnTypeString).Description("The HMAC'd secrets value returned from the server.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_host_catalog_plugin
+// func GetColumns_boundary_host_catalog_plugin() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("internal_force_update").ColumnType(schema.ColumnTypeString).Description("Internal only. Used to force update so that we can always check the value of secrets.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("internal_hmac_used_for_secrets_config_hmac").ColumnType(schema.ColumnTypeString).Description("Internal only. The Boundary-provided HMAC used to calculate the current value of the HMAC'd config. Used for drift detection.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("plugin_name").ColumnType(schema.ColumnTypeString).Description("The name of the plugin that should back the resource. This or plugin_id must be defined.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("secrets_json").ColumnType(schema.ColumnTypeString).Description("The secrets for the host catalog. Either values encoded with the \"jsonencode\" function, pre-escaped JSON string, or a file:// or env:// path. Set to a string \"null\" to clear any existing values. NOTE: Unlike \"attributes_json\", removing this block will NOT clear secrets from the host catalog; this allows injecting secrets for one call, then removing them for storage.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("attributes_json").ColumnType(schema.ColumnTypeString).Description("The attributes for the host catalog. Either values encoded with the \"jsonencode\" function, pre-escaped JSON string, or a file:// or env:// path. Set to a string \"null\" or remove the block to clear all attributes in the host catalog.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host catalog description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host catalog.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("internal_secrets_config_hmac").ColumnType(schema.ColumnTypeString).Description("Internal only. HMAC of (serverSecretsHmac + config secrets). Used for proper secrets handling.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host catalog name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("plugin_id").ColumnType(schema.ColumnTypeString).Description("The ID of the plugin that should back the resource. This or plugin_name must be defined.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("secrets_hmac").ColumnType(schema.ColumnTypeString).Description("The HMAC'd secrets value returned from the server.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
@@ -595,121 +595,121 @@ func GetColumns_boundary_group() []*schema.Column {
 
 
 
-// boundary_host_set
-func TableSchemaGenerator_boundary_host_set() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_host_set
+// func TableSchemaGenerator_boundary_host_set() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_host_set().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_host_set().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_host_set()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_host_set()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_host_set
-func GetColumns_boundary_host_set() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host set description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Description("The catalog for the host set.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("host_ids").ColumnType(schema.ColumnTypeJSON).Description("The list of host IDs contained in this set.").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host set.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host set name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host set").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
-
-
-
-// boundary_credential_library_vault
-func TableSchemaGenerator_boundary_credential_library_vault() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
-
-    table, d := GetResource_boundary_credential_library_vault().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
-
-    table.Columns = GetColumns_boundary_credential_library_vault()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
-
-    return table, diagnostics
-}
-
-// boundary_credential_library_vault
-func GetColumns_boundary_credential_library_vault() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("credential_type").ColumnType(schema.ColumnTypeString).Description("The type of credential the library generates.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("http_request_body").ColumnType(schema.ColumnTypeString).Description("The body of the HTTP request the library sends to Vault when requesting credentials. Only valid if `http_method` is set to `POST`.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("credential_mapping_overrides").ColumnType(schema.ColumnTypeJSON).Description("The credential mapping override.").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("The ID of the credential store that this library belongs to.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The Vault credential library description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("http_method").ColumnType(schema.ColumnTypeString).Description("The HTTP method the library uses when requesting credentials from Vault. Defaults to 'GET'").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the Vault credential library.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The Vault credential library name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("path").ColumnType(schema.ColumnTypeString).Description("The path in Vault to request credentials from.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_host_set
+// func GetColumns_boundary_host_set() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host set description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Description("The catalog for the host set.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("host_ids").ColumnType(schema.ColumnTypeJSON).Description("The list of host IDs contained in this set.").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host set.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host set name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host set").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
-// boundary_credential_store_vault
-func TableSchemaGenerator_boundary_credential_store_vault() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_credential_library_vault
+// func TableSchemaGenerator_boundary_credential_library_vault() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_credential_store_vault().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_credential_library_vault().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_credential_store_vault()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_credential_library_vault()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_credential_store_vault
-func GetColumns_boundary_credential_store_vault() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The Vault credential store description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("tls_server_name").ColumnType(schema.ColumnTypeString).Description("Name to use as the SNI host when connecting to Vault via TLS.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("token_hmac").ColumnType(schema.ColumnTypeString).Description("The Vault token hmac.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("client_certificate").ColumnType(schema.ColumnTypeString).Description("A PEM-encoded client certificate to use for TLS authentication to the Vault server.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("client_certificate_key").ColumnType(schema.ColumnTypeString).Description("A PEM-encoded private key matching the client certificate from 'client_certificate'.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("client_certificate_key_hmac").ColumnType(schema.ColumnTypeString).Description("The Vault client certificate key hmac.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope for this credential store.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("tls_skip_verify").ColumnType(schema.ColumnTypeBool).Description("Whether or not to skip TLS verification.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("ca_cert").ColumnType(schema.ColumnTypeString).Description("A PEM-encoded CA certificate to verify the Vault server's TLS certificate.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The Vault credential store name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("token").ColumnType(schema.ColumnTypeString).Description("A token used for accessing Vault.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("address").ColumnType(schema.ColumnTypeString).Description("The address to Vault server. This should be a complete URL such as 'https://127.0.0.1:8200'").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the Vault credential store.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("namespace").ColumnType(schema.ColumnTypeString).Description("The namespace within Vault to use.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_credential_library_vault
+// func GetColumns_boundary_credential_library_vault() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("credential_type").ColumnType(schema.ColumnTypeString).Description("The type of credential the library generates.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("http_request_body").ColumnType(schema.ColumnTypeString).Description("The body of the HTTP request the library sends to Vault when requesting credentials. Only valid if `http_method` is set to `POST`.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("credential_mapping_overrides").ColumnType(schema.ColumnTypeJSON).Description("The credential mapping override.").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("credential_store_id").ColumnType(schema.ColumnTypeString).Description("The ID of the credential store that this library belongs to.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The Vault credential library description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("http_method").ColumnType(schema.ColumnTypeString).Description("The HTTP method the library uses when requesting credentials from Vault. Defaults to 'GET'").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the Vault credential library.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The Vault credential library name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("path").ColumnType(schema.ColumnTypeString).Description("The path in Vault to request credentials from.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
+
+
+
+// // boundary_credential_store_vault
+// func TableSchemaGenerator_boundary_credential_store_vault() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
+
+//     table, d := GetResource_boundary_credential_store_vault().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
+
+//     table.Columns = GetColumns_boundary_credential_store_vault()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
+
+//     return table, diagnostics
+// }
+
+// // boundary_credential_store_vault
+// func GetColumns_boundary_credential_store_vault() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The Vault credential store description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("tls_server_name").ColumnType(schema.ColumnTypeString).Description("Name to use as the SNI host when connecting to Vault via TLS.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("token_hmac").ColumnType(schema.ColumnTypeString).Description("The Vault token hmac.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("client_certificate").ColumnType(schema.ColumnTypeString).Description("A PEM-encoded client certificate to use for TLS authentication to the Vault server.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("client_certificate_key").ColumnType(schema.ColumnTypeString).Description("A PEM-encoded private key matching the client certificate from 'client_certificate'.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("client_certificate_key_hmac").ColumnType(schema.ColumnTypeString).Description("The Vault client certificate key hmac.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope for this credential store.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("tls_skip_verify").ColumnType(schema.ColumnTypeBool).Description("Whether or not to skip TLS verification.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("ca_cert").ColumnType(schema.ColumnTypeString).Description("A PEM-encoded CA certificate to verify the Vault server's TLS certificate.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The Vault credential store name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("token").ColumnType(schema.ColumnTypeString).Description("A token used for accessing Vault.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("address").ColumnType(schema.ColumnTypeString).Description("The address to Vault server. This should be a complete URL such as 'https://127.0.0.1:8200'").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the Vault credential store.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("namespace").ColumnType(schema.ColumnTypeString).Description("The namespace within Vault to use.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
@@ -748,109 +748,109 @@ func GetColumns_boundary_user() []*schema.Column {
 
 
 
-// boundary_account_oidc
-func TableSchemaGenerator_boundary_account_oidc() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_account_oidc
+// func TableSchemaGenerator_boundary_account_oidc() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_account_oidc().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_account_oidc().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_account_oidc()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_account_oidc()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_account_oidc
-func GetColumns_boundary_account_oidc() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("subject").ColumnType(schema.ColumnTypeString).Description("The OIDC subject.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("auth_method_id").ColumnType(schema.ColumnTypeString).Description("The resource ID for the auth method.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The account description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the account.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("issuer").ColumnType(schema.ColumnTypeString).Description("The OIDC issuer.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The account name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
-
-
-
-// boundary_host_set_static
-func TableSchemaGenerator_boundary_host_set_static() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
-
-    table, d := GetResource_boundary_host_set_static().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
-
-    table.Columns = GetColumns_boundary_host_set_static()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
-
-    return table, diagnostics
-}
-
-// boundary_host_set_static
-func GetColumns_boundary_host_set_static() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host set description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Description("The catalog for the host set.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("host_ids").ColumnType(schema.ColumnTypeJSON).Description("The list of host IDs contained in this set.").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host set.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host set name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host set").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_account_oidc
+// func GetColumns_boundary_account_oidc() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("subject").ColumnType(schema.ColumnTypeString).Description("The OIDC subject.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("auth_method_id").ColumnType(schema.ColumnTypeString).Description("The resource ID for the auth method.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The account description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the account.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("issuer").ColumnType(schema.ColumnTypeString).Description("The OIDC issuer.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The account name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
-// boundary_host
-func TableSchemaGenerator_boundary_host() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_host_set_static
+// func TableSchemaGenerator_boundary_host_set_static() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_host().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_host_set_static().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_host()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_host_set_static()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_host
-func GetColumns_boundary_host() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("address").ColumnType(schema.ColumnTypeString).Description("The static address of the host resource as `<IP>` (note: port assignment occurs in the target resource definition, do not add :port here) or a domain name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_host_set_static
+// func GetColumns_boundary_host_set_static() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host set description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Description("The catalog for the host set.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("host_ids").ColumnType(schema.ColumnTypeJSON).Description("The list of host IDs contained in this set.").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host set.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host set name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host set").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
+
+
+
+// // boundary_host
+// func TableSchemaGenerator_boundary_host() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
+
+//     table, d := GetResource_boundary_host().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
+
+//     table.Columns = GetColumns_boundary_host()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
+
+//     return table, diagnostics
+// }
+
+// // boundary_host
+// func GetColumns_boundary_host() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The type of host").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("address").ColumnType(schema.ColumnTypeString).Description("The static address of the host resource as `<IP>` (note: port assignment occurs in the target resource definition, do not add :port here) or a domain name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("host_catalog_id").ColumnType(schema.ColumnTypeString).Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
@@ -890,104 +890,104 @@ func GetColumns_boundary_auth_method_password() []*schema.Column {
 
 
 
-// boundary_credential_store_static
-func TableSchemaGenerator_boundary_credential_store_static() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_credential_store_static
+// func TableSchemaGenerator_boundary_credential_store_static() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_credential_store_static().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_credential_store_static().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_credential_store_static()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_credential_store_static()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_credential_store_static
-func GetColumns_boundary_credential_store_static() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The static credential store description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the static credential store.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The static credential store name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope for this credential store.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
-
-
-
-// boundary_host_catalog
-func TableSchemaGenerator_boundary_host_catalog() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
-
-    table, d := GetResource_boundary_host_catalog().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
-
-    table.Columns = GetColumns_boundary_host_catalog()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
-
-    return table, diagnostics
-}
-
-// boundary_host_catalog
-func GetColumns_boundary_host_catalog() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The host catalog type. Only `static` is supported.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host catalog description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host catalog.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host catalog name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_credential_store_static
+// func GetColumns_boundary_credential_store_static() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The static credential store description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the static credential store.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The static credential store name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope for this credential store.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
-// boundary_managed_group
-func TableSchemaGenerator_boundary_managed_group() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_host_catalog
+// func TableSchemaGenerator_boundary_host_catalog() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_managed_group().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_host_catalog().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_managed_group()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_host_catalog()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_managed_group
-func GetColumns_boundary_managed_group() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The managed group description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("filter").ColumnType(schema.ColumnTypeString).Description("Boolean expression to filter the workers for this managed group.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the group.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The managed group name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("auth_method_id").ColumnType(schema.ColumnTypeString).Description("The resource ID for the auth method.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_host_catalog
+// func GetColumns_boundary_host_catalog() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The host catalog type. Only `static` is supported.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The host catalog description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the host catalog.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The host catalog name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("scope_id").ColumnType(schema.ColumnTypeString).Description("The scope ID in which the resource is created.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
+
+
+
+// // boundary_managed_group
+// func TableSchemaGenerator_boundary_managed_group() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
+
+//     table, d := GetResource_boundary_managed_group().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
+
+//     table.Columns = GetColumns_boundary_managed_group()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
+
+//     return table, diagnostics
+// }
+
+// // boundary_managed_group
+// func GetColumns_boundary_managed_group() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The managed group description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("filter").ColumnType(schema.ColumnTypeString).Description("Boolean expression to filter the workers for this managed group.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the group.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The managed group name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("auth_method_id").ColumnType(schema.ColumnTypeString).Description("The resource ID for the auth method.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
 
@@ -1030,38 +1030,38 @@ func GetColumns_boundary_worker() []*schema.Column {
 
 
 
-// boundary_account
-func TableSchemaGenerator_boundary_account() (*schema.Table, *schema.Diagnostics) {
-    diagnostics := schema.NewDiagnostics()
+// // boundary_account
+// func TableSchemaGenerator_boundary_account() (*schema.Table, *schema.Diagnostics) {
+//     diagnostics := schema.NewDiagnostics()
 
-    table, d := GetResource_boundary_account().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
-        return taskClient.(*Client).TerraformBridge
-    })
-    if diagnostics.AddDiagnostics(d).HasError() {
-        return nil, diagnostics
-    }
+//     table, d := GetResource_boundary_account().ToTable(func(ctx context.Context, clientMeta *schema.ClientMeta, taskClient any, task *schema.DataSourcePullTask) *bridge.TerraformBridge {
+//         return taskClient.(*Client).TerraformBridge
+//     })
+//     if diagnostics.AddDiagnostics(d).HasError() {
+//         return nil, diagnostics
+//     }
 
-    table.Columns = GetColumns_boundary_account()
-    if len(table.Columns) == 0 {
-        return nil, diagnostics.AddErrorMsg("")
-    }
+//     table.Columns = GetColumns_boundary_account()
+//     if len(table.Columns) == 0 {
+//         return nil, diagnostics.AddErrorMsg("")
+//     }
 
-    return table, diagnostics
-}
+//     return table, diagnostics
+// }
 
-// boundary_account
-func GetColumns_boundary_account() []*schema.Column {
-    return []*schema.Column{ 
-        table_schema_generator.NewColumnBuilder().ColumnName("auth_method_id").ColumnType(schema.ColumnTypeString).Description("The resource ID for the auth method.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The account description.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the account.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("login_name").ColumnType(schema.ColumnTypeString).Description("The login name for this account.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The account name. Defaults to the resource name.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("password").ColumnType(schema.ColumnTypeString).Description("The account password. Only set on create, changes will not be reflected when updating account.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The resource type.").Build(), 
-        table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
-        Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
-    }
-}
+// // boundary_account
+// func GetColumns_boundary_account() []*schema.Column {
+//     return []*schema.Column{ 
+//         table_schema_generator.NewColumnBuilder().ColumnName("auth_method_id").ColumnType(schema.ColumnTypeString).Description("The resource ID for the auth method.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("description").ColumnType(schema.ColumnTypeString).Description("The account description.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("id").ColumnType(schema.ColumnTypeString).Description("The ID of the account.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("login_name").ColumnType(schema.ColumnTypeString).Description("The login name for this account.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("name").ColumnType(schema.ColumnTypeString).Description("The account name. Defaults to the resource name.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("password").ColumnType(schema.ColumnTypeString).Description("The account password. Only set on create, changes will not be reflected when updating account.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("type").ColumnType(schema.ColumnTypeString).Description("The resource type.").Build(), 
+//         table_schema_generator.NewColumnBuilder().ColumnName("selefra_terraform_original_result").ColumnType(schema.ColumnTypeJSON).Description("save terraform original result for compatibility").
+//         Extractor(column_value_extractor.TerraformRawDataColumnValueExtractor()).Build(), 
+//     }
+// }
 
 
